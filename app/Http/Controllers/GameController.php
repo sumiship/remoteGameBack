@@ -20,9 +20,22 @@ class GameController extends Controller
             'data' => $item
         ], 201);
     }
-    public function show(Game $game)
+    // public function show(Game $game)
+    // {
+    //     $item = Game::where('roomId', $game);
+    //     if ($item) {
+    //     return response()->json([
+    //         'data' => [$item,$game]
+    //     ], 200);
+    //     } else {
+    //     return response()->json([
+    //         'message' => 'Not found',
+    //     ], 404);
+    //     }
+    // }
+    public function test($roomId)
     {
-        $item = Game::where('roomId', $game);
+        $item = Game::where('roomId', $roomId)->get();
         if ($item) {
         return response()->json([
             'data' => $item
@@ -48,6 +61,13 @@ class GameController extends Controller
                 'message' => 'Not found',
             ], 404);
         }
+    }
+    public function game(Request $request)
+    {
+        $update=[
+            'game'=>$request->game
+        ];
+        Game::where('roomId',$request->roomId)->update($update);
     }
     public function destroy(Request $request)
     {

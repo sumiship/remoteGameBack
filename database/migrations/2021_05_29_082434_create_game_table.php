@@ -18,8 +18,7 @@ class CreateGameTable extends Migration
             $table->integer('roomId');
             $table->string('player1');
             $table->string('player2')->nullable();
-            $table->text('message1')->nullable();
-            $table->text('message2')->nullable();
+            $table->text('game')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });
